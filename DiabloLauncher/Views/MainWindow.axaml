@@ -1,0 +1,125 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:DiabloLauncher.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        Width="600" Height="450"
+        x:Class="DiabloLauncher.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/d2icon.png"
+        Title="Auratum Launcher"
+		CanResize="False">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<!-- Set background image -->
+	<Window.Background>
+		<ImageBrush Source="/Assets/diablo-2.png" Stretch="UniformToFill"/>
+	</Window.Background>
+
+	<Grid>
+		<TextBlock Text="{Binding Greeting}"
+				  HorizontalAlignment="Center"
+				  FontSize="36"
+				  VerticalAlignment="Top"
+				  Margin="0,30,0,0"
+				  Foreground="Black"
+				  RenderTransformOrigin="0.5,0.5">
+			<TextBlock.RenderTransform>
+				<TranslateTransform X="-3" Y="-3"/>
+			</TextBlock.RenderTransform>
+		</TextBlock>
+
+		<TextBlock Text="{Binding Greeting}"
+				   HorizontalAlignment="Center"
+				   FontSize="36"
+				   VerticalAlignment="Top"
+				   Margin="0,30,0,0"
+				   Foreground="Black"
+				   RenderTransformOrigin="0.5,0.5">
+			<TextBlock.RenderTransform>
+				<TranslateTransform X="3" Y="-3"/>
+			</TextBlock.RenderTransform>
+		</TextBlock>
+
+		<TextBlock Text="{Binding Greeting}"
+				   HorizontalAlignment="Center"
+				   FontSize="36"
+				   VerticalAlignment="Top"
+				   Margin="0,30,0,0"
+				   Foreground="Black"
+				   RenderTransformOrigin="0.5,0.5">
+			<TextBlock.RenderTransform>
+				<TranslateTransform X="-3" Y="3"/>
+			</TextBlock.RenderTransform>
+		</TextBlock>
+
+		<TextBlock Text="{Binding Greeting}"
+				   HorizontalAlignment="Center"
+				   FontSize="36"
+				   VerticalAlignment="Top"
+				   Margin="0,30,0,0"
+				   Foreground="Black"
+				   RenderTransformOrigin="0.5,0.5">
+			<TextBlock.RenderTransform>
+				<TranslateTransform X="3" Y="3"/>
+			</TextBlock.RenderTransform>
+		</TextBlock>
+
+		<TextBlock x:Name="GreetingTextBlock"
+				   Text="{Binding Greeting}"
+				   HorizontalAlignment="Center"
+				   FontSize="36"
+				   VerticalAlignment="Top"
+				   Margin="0,30,0,0"
+				   Foreground="White"/>
+
+		<Border BorderThickness="1" BorderBrush="Gray" Padding="15"
+        HorizontalAlignment="Right" VerticalAlignment="Center" Margin="100,120,20,0"
+        CornerRadius="10">
+			<Border.Background>
+				<SolidColorBrush Color="Black" Opacity="0.6"/>
+			</Border.Background>
+
+			<StackPanel>
+				<Border BorderThickness="1" BorderBrush="Gray" Background="Transparent" Padding="10"
+						CornerRadius="8">
+					<StackPanel>
+						<TextBlock Text="Launch Flags" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"
+								   HorizontalAlignment="Center" Foreground="White"/>
+
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="Auto"/>
+							</Grid.RowDefinitions>
+
+							<CheckBox Cursor="Hand" IsChecked="{Binding IsWindowed}" Content="Windowed" Grid.Row="0" Grid.Column="0" Margin="5" Foreground="White"/>
+							<CheckBox Cursor="Hand" IsChecked="{Binding IsHD}" Content="HD" Grid.Row="1" Grid.Column="0" Margin="5" Foreground="White"/>
+						</Grid>
+					</StackPanel>
+				</Border>
+
+				<Button Width="100" Height="30"
+						HorizontalContentAlignment="Center"
+						HorizontalAlignment="Center"
+						VerticalContentAlignment="Center"
+						Margin="0 18 0 0"
+						CornerRadius="6" Foreground="White"
+						Cursor="Hand"
+						Command="{Binding PlayCommand}">
+					<Button.Background>
+						<ImageBrush Source="/Assets/d2button.png" Stretch="Fill"/>
+					</Button.Background>
+					<TextBlock Text="Play"/>
+				</Button>
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>
